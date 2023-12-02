@@ -32,7 +32,26 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+p {
+  color: blue;
+  font-size: 200px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: red;
+  padding: 5px;
+}
+
+button {
+  color: blue;
+  background-color: aqua;
+  border-width: 10px;
+  font-size: 20px;
+  border-color: red;
+  padding: 5px;
 }

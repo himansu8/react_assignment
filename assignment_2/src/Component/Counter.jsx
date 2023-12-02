@@ -8,9 +8,11 @@ function Counter(){
 
     return(
         <>
+        <center>
         <p>Count : {Count}</p>
-        <><button onClick={incrementHandler}>Increment</button></>
-        </>
+        <button onClick={incrementHandler}>Increment</button>
+        </center>
+      </>
     )
 }
 export default Counter;
