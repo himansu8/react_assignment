@@ -11,11 +11,36 @@ function App() {
     fetchjokes()
   }, [])
   function fetchjokes() {
-    const url = 'https://v2.jokeapi.dev/joke/Any?type=single&amount=10'
+    const url = 'https://v2.jokeapi.dev/joke/Any?type=single&amount=1'
     axios.get(url)
       .then((res) => {
-        console.log(res.data.jokes)
-        setJokes(res.data.jokes)
+        console.log(res.data.category)
+        setJokes(res.data.joke)
+
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+  }
+  function fetchProgjokes() {
+    const url = 'https://v2.jokeapi.dev/joke/programming?type=single&amount=1'
+    axios.get(url)
+      .then((res) => {
+        console.log(res.data.category)
+        setJokes(res.data.joke)
+
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+  }function fetchPunjokes() {
+    const url = 'https://v2.jokeapi.dev/joke/pun?type=single&amount=1'
+    axios.get(url)
+      .then((res) => {
+        console.log(res.data.category)
+        setJokes(res.data.joke)
 
       })
       .catch((err) => {
@@ -25,8 +50,8 @@ function App() {
   }
   return (
     <>
-      {/* <JokesApp jokes={jokes} fetchjokes={fetchjokes} /> */}
-      <JokesApp2 jokes={jokes} fetchjokes={fetchjokes} />
+      <JokesApp jokes={jokes} fetchjokes={fetchjokes} fetchProgjokes={fetchProgjokes} fetchPunjokes={fetchPunjokes}/>
+      {/* <JokesApp2 jokes={jokes} fetchjokes={fetchjokes} /> */}
 
     </>
   )
