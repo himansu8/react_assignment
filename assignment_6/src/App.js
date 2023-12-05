@@ -8,10 +8,10 @@ import axios from 'axios';
 function App() {
   const [jokes, setJokes] = useState([])
   useEffect(() => {
-    fetchjokes()
+    fetchjokes("Any")
   }, [])
-  function fetchjokes() {
-    const url = 'https://v2.jokeapi.dev/joke/Any?type=single&amount=1'
+  function fetchjokes(category) {
+    const url = `https://v2.jokeapi.dev/joke/${category}?type=single&amount=1`
     axios.get(url)
       .then((res) => {
         console.log(res.data.category)
@@ -23,34 +23,10 @@ function App() {
       })
 
   }
-  function fetchProgjokes() {
-    const url = 'https://v2.jokeapi.dev/joke/programming?type=single&amount=1'
-    axios.get(url)
-      .then((res) => {
-        console.log(res.data.category)
-        setJokes(res.data.joke)
 
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
-  }function fetchPunjokes() {
-    const url = 'https://v2.jokeapi.dev/joke/pun?type=single&amount=1'
-    axios.get(url)
-      .then((res) => {
-        console.log(res.data.category)
-        setJokes(res.data.joke)
-
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-
-  }
   return (
     <>
-      <JokesApp jokes={jokes} fetchjokes={fetchjokes} fetchProgjokes={fetchProgjokes} fetchPunjokes={fetchPunjokes}/>
+      <JokesApp jokes={jokes} fetchjokes={fetchjokes} />
       {/* <JokesApp2 jokes={jokes} fetchjokes={fetchjokes} /> */}
 
     </>
