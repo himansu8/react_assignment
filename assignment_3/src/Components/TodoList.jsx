@@ -6,7 +6,7 @@ function TodoList() {
 
     function addTasks() {
         //console.log('task to be add')
-        if (task.trim() !=='') {
+        if (task.trim() !== '') {
             const list = [...tasks, task];
             setTasks(list)
             setTask('')
@@ -29,12 +29,17 @@ function TodoList() {
 
             {tasks.map((ele, index) => {
                 return (
-                    <ul key={index}>
-                        <li >{ele}</li>
-                    </ul>
+                    <>
+                        <ul key={index}>
+                            <li >{ele}</li>
+                            <button onClick={() => deleteTasks(index)}>DELETE TASK</button>
+                        </ul>
+
+                    </>
                 )
+
+
             })}
-            <button onClick={deleteTasks}>DELETE TASK</button>
 
         </>
     )
