@@ -7,26 +7,44 @@ import axios from 'axios';
 
 function App() {
   const [jokes, setJokes] = useState([])
+  const [type, setType] = useState('')
   useEffect(() => {
-    fetchjokes("Any")
+    fetchjokes("Any", "single")
   }, [])
-  function fetchjokes(category) {
-    const url = `https://v2.jokeapi.dev/joke/${category}?type=single&amount=1`
-    axios.get(url)
-      .then((res) => {
-        console.log(res.data.category)
-        setJokes(res.data.joke)
+  function fetchjokes(category, type) {
+    const url = `https://v2.jokeapi.dev/joke/${category}?type=${type}&amount=1`
 
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    if (type == "single") {
+      axios.get(url)
+        .then((res) => {
+          //console.log(res.data.category)
+          setJokes(res.data.joke)
+          setType('')
+
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+    else {
+      axios.get(url)
+        .then((res) => {
+         // console.log(res.data.category)
+          setJokes(res.data.setup)
+          setType(res.data.delivery)
+
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
 
   }
 
   return (
     <>
-      <JokesApp jokes={jokes} fetchjokes={fetchjokes} />
+      <JokesApp jokes={jokes} type={type} fetchjokes={fetchjokes} />
       {/* <JokesApp2 jokes={jokes} fetchjokes={fetchjokes} /> */}
 
     </>

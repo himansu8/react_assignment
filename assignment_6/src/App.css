@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+#display{
+  background-color: aquamarine;
+}
+#heading{
+  background-color: blue;
+  text-align: center;
+  font-size: 40px;
+color: white;
+}
